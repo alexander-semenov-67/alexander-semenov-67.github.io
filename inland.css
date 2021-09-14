@@ -1,0 +1,771 @@
+/*
+Original design: Inland (v1.2 - Sep 12, 2012) - A free xhtml/css website template by Andreas Viklund.
+For more information, see http://andreasviklund.com/templates/inland/
+Includes:
+jQuery v1.7.1 from http://jquery.org/
+Nivo Slider v2.7.1 by Gilbert Pellegrom - http://nivo.dev7studios.com/
+*/
+
+*{border:0;font:inherit;font-size:100%;margin:0;padding:0;vertical-align:baseline;}
+
+/* HTML elements */
+body{background-color:#f2f2f2;color:#666;font-family:'Droid Sans',Tahoma,Arial,sans-serif;font-size:13px;line-height:1.6em;}
+a{color:#a54569;text-decoration:none;}
+a:hover{color:#333;text-decoration:none;}
+a img{border:none;}
+h1,h2,h3,h4{clear:left;color:#5c5a5a;font-weight:400;margin:0.7em 0;font-family:'Yanone Kaffeesatz';}
+h1{font-size:2.6em;}
+h2{font-size:2.4em;}
+h3{font-size:1.9em;}
+p,ul{margin:0 0 20px 0;}
+i,em {font-style:italic;}
+b,strong {font-weight:700;}
+
+/* Main wrappers */
+#wrapper1240{background-color:#fff;margin:20px auto;width:1240px;}
+#wrapper960{background-color:#fff;margin:35px auto;width:960px;}
+#wrapper760{background-color:#fff;margin:20px auto;width:760px;}
+#wrapper600{background-color:#fff;margin:0 auto;width:600px;}
+#wrapperfluid{background-color:#fff;margin:0 auto;max-width:1260px;}
+
+/* Layout IDs */
+#header{position:relative;}
+#sitetitle{float:left;margin:30px 0 10px 30px;}
+#sitetitle h1 {font-size:40px;color:#777;margin:0;padding:0;}
+#sitetitle h2 {font-family:'Droid Sans',Tahoma,Arial,sans-serif;font-size:15px;color:#777;margin:0px;padding:0;}
+#header-image{height:300px;margin:0;padding:0;}
+#content{padding:15px 30px;background-color:#fafafa;}
+#extended{padding:15px 30px;background-color:#fff;}
+#extended a{text-decoration:underline;}
+
+/* Top links menu */
+#toplinks{background-color:#fafafa;padding:0 30px;}
+#toplinks ul{list-style:none;margin:0;text-align:right;}
+#toplinks ul li{display:inline-block;font-size:11px;margin:15px 0 12px 15px;}
+#toplinks ul li a{color:#797777;}
+#toplinks ul li a:hover{color:#2c2b2b;text-decoration:none;}
+
+/* Main navigation menu */
+#nav{float:right;font-family:'Droid Sans',Verdana,Tahoma,sans-serif;text-align:center;}
+#nav ul{list-style:none;margin:30px 30px 26px 20px;}
+#nav ul li{background:none!important;display:inline-block;text-align:right;height:auto;line-height:25px;margin-bottom:0;margin-left:25px;position:relative;}
+#nav ul li a{color:#797777;display:block;font-size:12px;padding-top:0;text-transform:uppercase;}
+#nav ul li a:hover{color:#111;}
+#nav ul li a.current{color:#000;}
+
+/* Toolbar menu */
+#toolbar{font-family:'Droid Sans',Verdana,Tahoma,sans-serif;text-align:center;background-color:white;padding:0 0px;margin-left:310px}
+#toolbar ul{list-style-type:none;padding:0;overflow:hidden;text-align:right;background-color: #5c5a5a;margin:30px 0px 26px 20px;box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);}
+#toolbar ul li {background:none!important;display:inline-block;text-align:right;height:auto;line-height:30px;margin-bottom:0;position:relative;float: right;
+}
+
+#toolbar ul li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#toolbar ul li a:hover, .dropdown:hover .dropbtn {
+    background-color: #a54569;
+}
+
+.dlenv{margin-top:2px; line-height:25px;}
+.dlenv2{margin-top:-10px; }
+
+/* Columns */
+#sidebar{width:33.3%;}
+#main{width:66.6%;}
+#trio1{float:left;width:33.3%;}
+#trio2{float:left;width:33.3%;}
+#trio3{float:right;width:33.3%;}
+.inner{margin:5px 30px;}
+#trio1 .inner{margin-left:0;}
+#trio2 .inner{margin:0;}
+#trio3 .inner{margin-right:0;}
+.left .inner{margin-left:0;}
+.right .inner{margin-right:0;}
+
+/* Footer */
+#footer{clear:both;background-color:#fafafa;}
+#footer p{color:#777;font-size:12px;margin:0;padding:15px 30px;text-align:center;}
+#footer a{color:#777;}
+#footer a:hover{color:#333;}
+
+/* Image alignment */
+img.alignleft,img.aligncenter,img.alignright{background:#fff;padding:4px;margin-bottom:10px;border:1px solid #ddd;}
+.alignleft{float:left;margin-right:30px;}
+.alignright{float:right;margin-left:30px;}
+.aligncenter{text-align:center;display:block;clear:both;margin:5px auto;}
+
+.roundedImage, .roundedImageShadow, .roundedImageBorder{
+	overflow:hidden;
+	-webkit-border-radius:50px;
+	-moz-border-radius: 50%;
+	border-radius:130px;
+	width:170px;
+	height:170px;
+}
+.roundedImageShadow{
+	-moz-box-shadow: 0px 0px 10px #343434;
+	-webkit-box-shadow: 0px 0px 10px #343434;
+	-o-box-shadow: 0px 0px 10px #343434;
+	box-shadow: 0px 0px 10px #343434;
+}
+.roundedImageBorder{
+	border: 1px solid #006699;
+}
+
+.myLegend {
+  font-size:12px;
+  margin-left:-59px;
+  margin-top:78px;
+  margin-bottom:-78px;
+  /*writing-mode:vertical-rl;
+  text-orientation:sideways-right;*/
+  -ms-transform: rotate(45deg); /* IE 9 */
+  -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/* Additional classes */
+.shadow{background:url(images/shadow.png) top center no-repeat;}
+.clear{clear:both;}
+.left{float:left;}
+.right{float:right;}
+
+/* Clearing fix */
+.clearfix:after{clear:both;content:".";display:block;height:0;visibility:hidden;}
+* html .clearfix{height:1%;}
+*:first-child+html .clearfix{min-height:1%;}
+
+/* Alternate color scheme, add class="altcolors" to the body tag to apply */
+.altcolors{background-color:#e6e8e8;}
+.altcolors #wrapper600, .altcolors #wrapper760, .altcolors #wrapper960, .altcolors #wrapper1240, .altcolors #wrapperfluid {box-shadow: 0px 0px 28px #888;}
+.altcolors #toplinks, .altcolors #footer{background-color:#eaecec;}
+.altcolors #content{background-color:#f2f4f4;}
+
+/*
+ jQuery Nivo Slider v2.7.1
+ http://nivo.dev7studios.com
+ Copyright 2011, Gilbert Pellegrom
+ Free to use and abuse under the MIT license.
+ http://www.opensource.org/licenses/mit-license.php
+ */
+.nivoSlider{position:relative;}
+.nivoSlider img{position:absolute;top:0;left:0;}
+.nivoSlider a.nivo-imageLink{position:absolute;top:0;left:0;width:100%;height:100%;border:0;padding:0;margin:0;z-index:6;display:none;}
+.nivo-slice{display:block;position:absolute;z-index:5;height:100%;}
+.nivo-box{display:block;position:absolute;z-index:5;}
+.nivo-caption{position:absolute;left:0;bottom:0;background:#000;color:#fff;opacity:0.8;width:100%;z-index:8;}
+.nivo-caption p{padding:5px;margin:0;}
+.nivo-caption a{display:inline!important;}
+.nivo-html-caption{display:none;}
+.nivo-directionNav a{position:absolute;top:45%;z-index:9;cursor:pointer;}
+.nivo-prevNav{left:0;}
+.nivo-nextNav{right:0;}
+.nivo-controlNav a{position:relative;z-index:9;cursor:pointer;}
+.nivo-controlNav a.active{font-weight:700;}
+
+/*
+Skin Name: Nivo Slider Default Theme (modified)
+Skin URI: http://nivo.dev7studios.com
+Skin Type: flexible
+Description: The default skin for the Nivo Slider, modified to work with the Inland One template.
+Version: 1.2
+Author: Gilbert Pellegrom (modified by Andreas Viklund)
+Author URI: http://dev7studios.com
+*/
+.slider-wrapper .nivoSlider{position:relative;height:300px;background:#fafafa url(images/loading.gif) no-repeat 50% 50%;margin-bottom:55px;}
+.slider-wrapper .nivoSlider img{position:absolute;top:0;left:0;display:none;}
+.slider-wrapper .nivoSlider a{border:0;display:block;}
+.slider-wrapper .nivo-controlNav{position:absolute;left:50%;bottom:-41px;margin-left:-60px;/* Tweak this to center bullets */}
+.slider-wrapper .nivo-controlNav a{display:block;width:22px;height:22px;background:url(images/bullets.png) no-repeat;text-indent:-9999px;border:0;margin-right:3px;float:left;}
+.slider-wrapper .nivo-controlNav a.active{background-position:0 -22px;}
+.slider-wrapper .nivo-directionNav a{display:block;width:30px;height:30px;background:url(images/arrows.png) no-repeat;text-indent:-9999px;border:0;}
+.slider-wrapper a.nivo-nextNav{background-position:-30px 0;right:15px;}
+.slider-wrapper a.nivo-prevNav{left:15px;}
+.slider-wrapper .nivo-caption{font-family:'Droid Sans',Helvetica,Arial,sans-serif;background:rgba(0, 0, 0, 0.2);text-align:center;text-shadow:0 0 4px #111;}
+.slider-wrapper .nivo-caption a{color:#fff;border-bottom:1px dotted #fff;}
+.slider-wrapper .nivo-caption a:hover{color:#fff;}
+
+/* Mobile styles */
+#wrappermobile {width:100%; margin:0px auto;}
+#wrappermobile .slider-wrapper, #wrappermobile .slider-wrapper .nivoSlider {width:100%;}
+#wrappermobile .slider-wrapper .nivoSlider img{width:100%;}
+#wrappermobile #sitetitle {margin:20px auto 0; padding:0; text-align:center;float:none;}
+#wrappermobile #nav {float:none;}
+#wrappermobile #nav ul {margin:20px auto 5px;}
+#wrappermobile #nav ul li {margin:0 15px 10px; line-height:20px;}
+#wrappermobile #header-image {height:100px;}
+#wrappermobile #content {padding:15px;}
+#wrappermobile #footer{background-color:#f2f2f2;padding:10px 30px;}
+#wrappermobile #footer p{font-size:0.6em;margin:0;padding:0;}
+
+#quarters {clear:both; margin:0 0 20px 0;}
+#quarters h2 {font-size:1.4em; color:#5c5a5a; margin:0 0 10px 0;}
+#quarters p {font-size:0.9em; color:#666; margin:0 0 15px 0;}
+.q1,.q2,.q3,.q4 {width:22%; margin:0 3% 20px 0; float:left;}
+.q4 {margin:0;}
+
+
+/*Button for links on the page*/
+.btn1 {
+    background-color: #5c5a5a;
+    border: none;
+    color: white;
+    padding: 0px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    text-transform:uppercase;
+    margin: 4px 0px;
+    cursor: pointer;
+    border-radius: 15px;
+    -moz-border-radius:15px;
+    -webkit-border-radius:15px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.btn1:hover {
+    background-color: #a54569;
+    color: white;
+}
+
+.btn1 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn1 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -15px;
+  transition: 0.5s;
+}
+
+.btn1:hover span {
+  padding-right: 15px;
+}
+
+.btn1:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.btn1:active {
+  -ms-transform: translateY(4px);
+  -webkit-transform: translateY(4px);
+  -moz-transform: translateY(4px);
+  transform: translateY(4px);
+}
+
+
+/* The switch - the box around the slider */
+.switch {
+  margin-bottom:-1px; position: relative; display: inline-block;
+  width: 36px; /*60px*/
+  height: 20px; /*34px*/
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  /*box-sizing:border-box;  
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;*/
+  position: absolute; cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #5c5a5a;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;/*26px;*/
+  width: 16px;/*26px;*/
+  left: 2px; /*4px;*/
+  bottom: 2px; /*4px;*/
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:after {
+  content:'\00bb';
+  color: white;
+  display: block;
+  position: absolute;
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 70%;
+  font-size: 13px;
+  font-family: Verdana, sans-serif;
+}
+
+input:checked + .slider {
+  background-color: #a54569;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #a54569;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(16px); /*translateX(26px);*/
+  -ms-transform: translateX(16px);
+  -moz-transform: translateX(16px);
+  transform: translateX(16px);
+}
+
+input:checked + .slider:after {
+  content:'\00ab';
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 30%;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 20px;
+  -moz-border-radius:20px;
+  -webkit-border-radius:20px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+}
+
+/* The switch-inv (open by default) - the box around the slider */
+.switch-inv {
+  margin-bottom:-1px;
+  position: relative;
+  display: inline-block;
+  width: 36px; /*60px*/
+  height: 20px; /*34px*/
+}
+
+/* Hide default HTML checkbox */
+.switch-inv input {display:none;}
+
+/* The slider */
+.slider-inv {
+  /*box-sizing:border-box;  
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;*/
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #a54569;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider-inv:before {
+  position: absolute;
+  content: "";
+  height: 16px;/*26px;*/
+  width: 16px;/*26px;*/
+  right: 2px; /*4px;*/
+  bottom: 2px; /*4px;*/
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider-inv:after {
+  content:'\00ab';
+  color: white;
+  display: block;
+  position: absolute;
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 30%;
+  font-size: 13px;
+  font-family: Verdana, sans-serif;
+}
+
+input:checked + .slider-inv {
+  background-color: #5c5a5a;
+}
+
+input:focus + .slider-inv {
+  box-shadow: 0 0 1px #5c5a5a;
+}
+
+input:checked + .slider-inv:before {
+  -webkit-transform: translateX(-16px); /*translateX(26px);*/
+  -ms-transform: translateX(-16px);
+  -moz-transform: translateX(-16px);
+  transform: translateX(-16px);
+}
+
+input:checked + .slider-inv:after {
+  content:'\00bb';
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 70%;
+}
+
+/* Rounded sliders */
+.slider-inv.round {
+  border-radius: 20px;
+  -moz-border-radius:20px;
+  -webkit-border-radius:20px;
+}
+
+.slider-inv.round:before {
+  border-radius: 50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+}
+
+
+
+/* The mini switch - the box around the slider */
+.switch-mini {
+  margin-bottom:-1px;
+  position: relative;
+  display: inline-block;
+  width: 27px; /*60px*/
+  height: 15px; /*34px*/
+}
+
+/* Hide default HTML checkbox */
+.switch-mini input {display:none;}
+
+/* The slider */
+.slider-mini {
+  /*box-sizing:border-box;  
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;*/
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #5c5a5a;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider-mini:before {
+  position: absolute;
+  content: "";
+  height: 11px;/*26px;*/
+  width: 11px;/*26px;*/
+  left: 2px; /*4px;*/
+  bottom: 2px; /*4px;*/
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider-mini:after {
+  content:'\00bb';
+  color: white;
+  display: block;
+  position: absolute;
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 70%;
+  font-size: 10px;
+  font-family: Verdana, sans-serif;
+}
+
+input:checked + .slider-mini {
+  background-color: #a54569;
+}
+
+input:focus + .slider-mini {
+  box-shadow: 0 0 1px #a54569;
+}
+
+input:checked + .slider-mini:before {
+  -webkit-transform: translateX(12px); /*translateX(26px);*/
+  -ms-transform: translateX(12px);
+  -moz-transform: translateX(12px);
+  transform: translateX(12px);
+}
+
+input:checked + .slider-mini:after {
+  content:'\00ab';
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 30%;
+}
+
+/* Rounded sliders */
+.slider-mini.round {
+  border-radius: 20px;
+  -moz-border-radius:20px;
+  -webkit-border-radius:20px;
+}
+
+.slider-mini.round:before {
+  border-radius: 50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+}
+
+
+/* The mini switch - the box around the slider */
+.switch-mini-inv {
+  margin-bottom:-1px;
+  position: relative;
+  display: inline-block;
+  width: 27px; /*60px*/
+  height: 15px; /*34px*/
+}
+
+/* Hide default HTML checkbox */
+.switch-mini-inv input {display:none;}
+
+/* The slider */
+.slider-mini-inv {
+  /*box-sizing:border-box;  
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;*/
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #a54569;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider-mini-inv:before {
+  position: absolute;
+  content: "";
+  height: 11px;/*26px;*/
+  width: 11px;/*26px;*/
+  right: 2px; /*4px;*/
+  bottom: 2px; /*4px;*/
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider-mini-inv:after {
+  content:'\00ab';
+  color: white;
+  display: block;
+  position: absolute;
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 30%;
+  font-size: 11px;
+  font-family: Verdana, sans-serif;
+}
+
+input:checked + .slider-mini-inv {
+  background-color: #5c5a5a;
+}
+
+input:focus + .slider-mini-inv {
+  box-shadow: 0 0 1px #5c5a5a;
+}
+
+input:checked + .slider-mini-inv:before {
+  -webkit-transform: translateX(-12px); /*translateX(26px);*/
+  -ms-transform: translateX(-12px);
+  -moz-transform: translateX(-12px);
+  transform: translateX(-12px);
+}
+
+input:checked + .slider-mini-inv:after {
+  content:'\00bb';
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 70%;
+}
+
+/* Rounded sliders */
+.slider-mini-inv.round {
+  border-radius: 20px;
+  -moz-border-radius:20px;
+  -webkit-border-radius:20px;
+}
+
+.slider-mini-inv.round:before {
+  border-radius: 50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.btn{
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  position:relative;
+  display:inline-block;
+  overflow:hidden;
+  height:21px;
+  border-radius:6px;
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  line-height:10px;
+  font-family:'Droid Sans',Tahoma,Arial,sans-serif;
+  font-size:12px; /*16px*/
+  color:#545353;
+  font-weight:normal;
+  text-shadow:0px 1px 1px #888;
+  padding:0 5px;
+  padding-left:10px;
+}
+
+.btn span.icon,.btn span.title{
+  display:block;
+  position:relative;
+  line-height:16px;
+  padding:0 5px;
+  border-radius:6px;
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+}
+
+
+.btn span.left{
+  float:left;
+  border-radius:6px 0 0 6px;
+  -moz-border-radius:6px 0 0 6px;
+  -webkit-border-radius:6px 0 0 6px;
+}
+
+.btn span.right{
+  float:right;
+  border-radius:0 6px 6px 0;
+  -moz-border-radius:0 6px 6px 0;
+  -webkit-border-radius:0 6px 6px 0;
+}
+
+/* Handle the parameter for the icon*/
+.btn span.icon{
+  font-size:13px;
+  background-color:#939292;
+  -webkit-box-shadow:0 3px 0 0 #545353;
+  box-shadow:0 3px 0 0 #545353;
+  text-shadow:0px 1px 1px #888;
+  /*color:white;*/
+}
+
+.btn span.title{
+  -webkit-box-shadow:0 3px 0 0 #a54569;
+  box-shadow:0 3px 0 0 #a54569;
+  background-color:#c07c96;
+  color:white;/*#5c5a5a;*/
+}
+
+/*.btn span.title{
+  -webkit-box-shadow:0 3px 0 0 #878686;
+  box-shadow:0 3px 0 0 #878686;
+  background-color:#cfcece;
+  color:#5c5a5a;
+}*/
+
+.btn:hover{color:white;}
+
+.btn-small{
+  margin-left:-3px;
+  margin-bottom:-4px;
+  position:relative;
+  display:inline-block;
+  overflow:hidden;
+  font-family:'Droid Sans',Tahoma,Arial,sans-serif;
+  font-size:13px; /*16px*/
+  color:#545353;
+  font-weight:normal;
+}
+
+.btn-small span.icon,.btn-small span.title{
+  display:block;
+  position:relative;
+  line-height:16px;
+  padding:0 3px;
+}
+
+
+.btn-small span.left{
+  float:left;
+  border-radius:6px 0 0 6px;
+  -moz-border-radius:6px 0 0 6px;
+  -webkit-border-radius:6px 0 0 6px;
+}
+
+.btn-small span.right{
+  float:right;
+  border-radius:0 6px 6px 0;
+  -moz-border-radius:0 6px 6px 0;
+  -webkit-border-radius:0 6px 6px 0;
+}
+
+/* Handle the parameter for the icon*/
+.btn-small span.icon{
+  font-size:14px;
+  color:#a54569;
+}
+
+.btn-small span.title{}
+
+.btn-small:hover{color:#a54569;}
+
+
+
